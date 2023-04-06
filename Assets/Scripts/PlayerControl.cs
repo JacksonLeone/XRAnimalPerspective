@@ -19,6 +19,8 @@ public class PlayerControl : MonoBehaviour
     InputAction moveAction;
     InputAction lookAction;
 
+    float velocityY = 0;
+
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
@@ -58,5 +60,19 @@ public class PlayerControl : MonoBehaviour
         Vector3 move = v.y * transform.forward + v.x * transform.right;
         move.Normalize();
         characterController.Move(move * Time.deltaTime * speed);
+
+        ApplyGravity();
+    }
+
+    private void ApplyGravity()
+    {
+        if (!characterController.isGrounded)
+        {
+            velocityY += -9.81f * Time.deltaTime;
+            characterController.Move(new Vector3(0, velocityY, 0));
+        } else
+        {
+            velocityY = 0;
+        }
     }
 }
