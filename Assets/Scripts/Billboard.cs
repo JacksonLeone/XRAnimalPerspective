@@ -17,11 +17,11 @@ public class Billboard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = Quaternion.Euler(0f, Camera.main.transform.rotation.eulerAngles.y, 0f);
+        transform.LookAt(Camera.main.transform);
+        transform.Rotate(0, 180, 0);
+        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
 
         float xd = Vector3.Distance(player.position, transform.position);
-        Debug.Log("DISTANCE: " + xd);
-        Debug.Log("ds: " + distance);
 
         if (xd < distance)
         {
