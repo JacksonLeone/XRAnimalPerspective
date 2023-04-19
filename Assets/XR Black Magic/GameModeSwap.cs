@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameModeSwap : MonoBehaviour
 {
+    public TextMeshProUGUI text;
     public GameObject desktopPlayer;
     public GameObject vrPlayer;
     public bool inVR = true;
@@ -19,6 +21,17 @@ public class GameModeSwap : MonoBehaviour
         {
             vrPlayer.SetActive(false);
             desktopPlayer.SetActive(true);
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (inVR)
+        {
+            text.text = "Desktop Mode";
+        } else
+        {
+            text.text = "VR Mode";
         }
     }
 
