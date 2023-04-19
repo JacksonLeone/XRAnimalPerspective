@@ -376,7 +376,7 @@ PrefabInstance:
     - target: {fileID: 5698815850846829502, guid: 3ec471eb8eeb9fc489bcf5320f069c02,
         type: 3}
       propertyPath: inVR
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5698815850846829502, guid: 3ec471eb8eeb9fc489bcf5320f069c02,
         type: 3}
