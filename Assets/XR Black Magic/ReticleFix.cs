@@ -8,6 +8,15 @@ public class ReticleFix : MonoBehaviour
     public XRInteractorLineVisual recipient;
     public XRRayInteractor observed;
     public MeshRenderer teleportArea;
+    public GameObject teleportObject;
+
+    private void Awake()
+    {
+        if (teleportObject != null)
+        {
+            teleportObject.SetActive(false);
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -15,10 +24,20 @@ public class ReticleFix : MonoBehaviour
         if (!observed.enabled) {
             recipient.reticle.SetActive(false);
             recipient.blockedReticle.SetActive(false);
-            teleportArea.enabled = false;
+            if (teleportObject != null)
+            {
+                teleportObject.SetActive(false);
+            }
+            if (teleportArea != null)
+                teleportArea.enabled = false;
         } else
         {
-            teleportArea.enabled = true;
+            if (teleportObject != null)
+            {
+                teleportObject.SetActive(false);
+            }
+            if (teleportArea != null)
+                teleportArea.enabled = true;
         }
     }
 }

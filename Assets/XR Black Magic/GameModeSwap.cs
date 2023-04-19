@@ -8,6 +8,20 @@ public class GameModeSwap : MonoBehaviour
     public GameObject vrPlayer;
     public bool inVR = true;
 
+    private void Start()
+    {
+        if (inVR)
+        {
+            vrPlayer.SetActive(true);
+            desktopPlayer.SetActive(false);
+        }
+        else
+        {
+            vrPlayer.SetActive(false);
+            desktopPlayer.SetActive(true);
+        }
+    }
+
     public void ChangeGameMode()
     {
         if (inVR)
