@@ -5,6 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class ReticleFix : MonoBehaviour
 {
+    public GameObject parent;
     public XRInteractorLineVisual recipient;
     public XRRayInteractor observed;
     public MeshRenderer teleportArea;
@@ -21,7 +22,16 @@ public class ReticleFix : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!observed.enabled) {
+        if (parent.activeSelf && observed.enabled)
+        {
+            if (teleportObject != null)
+            {
+                teleportObject.SetActive(true);
+            }
+            if (teleportArea != null)
+                teleportArea.enabled = true;
+        }
+        else {
             recipient.reticle.SetActive(false);
             recipient.blockedReticle.SetActive(false);
             if (teleportObject != null)
@@ -30,14 +40,6 @@ public class ReticleFix : MonoBehaviour
             }
             if (teleportArea != null)
                 teleportArea.enabled = false;
-        } else
-        {
-            if (teleportObject != null)
-            {
-                teleportObject.SetActive(false);
-            }
-            if (teleportArea != null)
-                teleportArea.enabled = true;
         }
     }
 }
