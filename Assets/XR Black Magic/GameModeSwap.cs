@@ -16,15 +16,17 @@ public class GameModeSwap : MonoBehaviour
         {
             vrPlayer.SetActive(true);
             desktopPlayer.SetActive(false);
+            UpdateText();
         }
         else
         {
             vrPlayer.SetActive(false);
             desktopPlayer.SetActive(true);
+            UpdateText();
         }
     }
 
-    private void LateUpdate()
+    private void UpdateText()
     {
         if (inVR)
         {
@@ -44,6 +46,7 @@ public class GameModeSwap : MonoBehaviour
             vrPlayer.SetActive(false);
             desktopPlayer.SetActive(true);
             inVR = false;
+            UpdateText();
         } else
         {
             vrPlayer.transform.position = desktopPlayer.transform.position + new Vector3(0, 0.5f, 0);
@@ -51,6 +54,7 @@ public class GameModeSwap : MonoBehaviour
             vrPlayer.SetActive(true);
             desktopPlayer.SetActive(false);
             inVR = true;
+            UpdateText();
         }
     }
 }
