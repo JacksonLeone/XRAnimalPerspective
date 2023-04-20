@@ -29,6 +29,11 @@ public class PlayerControl : MonoBehaviour
         lookAction = playerInput.actions["Look"];
     }
 
+    private void Start()
+    {
+        Cursor.visible = false;
+    }
+
     private void Update()
     {
         var d = lookAction.ReadValue<Vector2>();
@@ -47,8 +52,12 @@ public class PlayerControl : MonoBehaviour
                 x = 275;
             }
         }
-        Debug.Log(x);
         cam.transform.localEulerAngles = new Vector3(x, 0, 0);
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
 
         // Rotate player left/right
         Vector3 playerAngle = transform.eulerAngles;
