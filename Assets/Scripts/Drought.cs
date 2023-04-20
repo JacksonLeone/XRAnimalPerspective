@@ -31,6 +31,7 @@ public class Drought : MonoBehaviour
 
             if (!enter)
             {
+                player_audio.Stop();
                 player_audio.PlayOneShot(voice);
                 enter = true;
             }
